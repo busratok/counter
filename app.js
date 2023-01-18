@@ -1,7 +1,5 @@
 const show = document.getElementById("number");
-const down = document.getElementById("down");
-const reset = document.getElementById("reset");
-const up = document.getElementById("up");
+const buttons = document.querySelector(".buttons");
 
 let number = 0;
 const bgColor = (num) => {
@@ -14,16 +12,16 @@ const bgColor = (num) => {
   }
 };
 
-down.addEventListener("click", () => {
-  show.innerText = `${--number}`;
-  bgColor(number);
-});
-reset.addEventListener("click", () => {
-  number = 0;
-  show.innerHTML = number;
-  bgColor(number);
-});
-up.addEventListener("click", () => {
-  show.innerHTML = `${++number}`;
-  bgColor(number);
+buttons.addEventListener("click", (e) => {
+  if (e.target.id === "down") {
+    show.innerText = `${--number}`;
+    bgColor(number);
+  } else if (e.target.id === "reset") {
+    number = 0;
+    show.innerHTML = number;
+    bgColor(number);
+  } else if (e.target.id === "up") {
+    show.innerHTML = `${++number}`;
+    bgColor(number);
+  }
 });
